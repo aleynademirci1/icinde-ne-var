@@ -745,67 +745,63 @@ body {
 #analiz-ekran-alani:not(.gizli) .categories-container {
     display: none !important;
 }
-/* --- MOBİL İÇİN ÖZEL DÜZENLEME (MAX 768PX) --- */
-/* --- MOBİL İÇİN TAM DÜZEN (768px altı) --- */
-@media screen and (max-width: 768px) {
+/* --- MOBİL UYUMLULUK (768px ve altı) --- */
+@media (max-width: 768px) {
     
-    /* 1. HEADER: Logo, Arama, Kategoriler dikey sırayla */
+    /* 1. ANA SAYFA DÜZENİ */
     .main-header {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        padding: 10px !important;
-        gap: 15px !important;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
     }
 
-    .logo-container {
-        flex-direction: column !important;
-        text-align: center;
+    .header-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
     }
 
-    .search-and-categories-zone {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        align-items: center !important;
-        gap: 10px !important;
+    /* Arama çubuğu ve kategoriler */
+    #ust-arama-k { /* Arama çubuğunun ID'si */
+        width: 90%;
+        margin: 10px 0;
     }
 
-    .categories-container {
-        display: flex !important;
-        justify-content: center !important;
-        gap: 10px !important;
-    }
-
-    /* 2. ÜRÜN KARTLARI: 2'li yan yana grid yapısı */
+    /* Ürünlerin ikili dizilmesi */
     .sabit-kartlar-izgarasi {
-        display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 10px !important;
-        padding: 10px !important;
+        gap: 8px !important;
+        padding: 10px;
     }
 
-    /* 3. ANALİZ EKRANI: Sol (Model) Üste, Sağ (Analiz) Alta */
-    #analiz-ekran-alani {
-        display: flex !important;
-        flex-direction: column !important;
+    /* 2. ANALİZ EKRANI DÜZENİ */
+    .analiz-ekrani-container {
+        display: flex;
+        flex-direction: column; /* Üst üste diz */
+        padding: 10px;
     }
 
-    .analiz-sol-blok {
-        width: 100% !important;
-        order: 1; /* Görsel en üste */
+    .analiz-sol-panel {
+        width: 100%;
+        margin-bottom: 20px;
     }
 
-    .figma-sag-ana-panel {
-        width: 100% !important;
-        order: 2; /* Analiz bilgileri onun altına */
-        padding: 10px !important;
+    .analiz-sag-panel {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* İçeriklerin arasını açar */
     }
 
-    /* Footer'ı da mobilde bozmayalım */
-    .alt-bilgi-bari {
-        flex-direction: column !important;
-        height: auto !important;
-        padding: 15px !important;
+    /* Analiz bölümleri (Sağlık puanı, makrolar vs.) */
+    .analiz-bolumu { /* Buradaki class ismini kendi HTML yapındaki analiz kutucuklarına ver */
+        width: 100%;
+    }
+
+    /* 3. Genel düzenlemeler */
+    img {
+        max-width: 100%;
+        height: auto;
     }
 }

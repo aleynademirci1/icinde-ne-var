@@ -746,57 +746,65 @@ body {
     display: none !important;
 }
 /* --- MOBİL UYUMLULUK (768px ve altı) --- */
+/* =========================================================================
+   MOBİL UYUMLULUK (768px ve altı - Telefonlar ve Tabletler)
+   ========================================================================= */
 @media (max-width: 768px) {
     
     /* 1. ANA SAYFA DÜZENİ */
     .main-header {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        padding: 10px;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 15px !important;
+        padding: 10px !important;
     }
 
     .search-and-categories-zone {
-        align-items: center; /* Kategorileri ortaladık */
-        width: 100%;
+        align-items: center !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
 
-    /* Ürün ızgarası: İkili sistem */
+    /* Ürün ızgarası: İkili sistem (Figma tasarımından mobilde 2'li yapıya geçiş) */
     .sabit-kartlar-izgarasi {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 10px !important;
         padding: 5px !important;
     }
 
-    /* 2. ANALİZ EKRANI (Senin HTML'ine özel düzeltme) */
+    /* 2. ANALİZ EKRANI (İçeriklerin alt alta dizilmesi) */
     #analiz-ekran-alani {
         flex-direction: column !important; /* Sol panel üst, sağ panel alt */
         padding: 10px !important;
         gap: 20px !important;
+        display: flex !important;
     }
 
     .analiz-sol-blok {
         width: 100% !important;
-        height: 350px !important; /* Telefonda boyutu kıstık */
+        height: 350px !important; /* Telefonda görsel alanı biraz kıstık */
+        margin-bottom: 0 !important;
     }
 
     .figma-sag-ana-panel {
         width: 100% !important;
-        height: auto !important; /* İçeriğe göre uzasın */
+        height: auto !important; /* İçeriğe göre dinamik uzar */
     }
 
     .analiz-kartlar-izgarasi {
+        display: grid !important;
         grid-template-columns: 1fr !important; /* Mobilde her şey tek sütun (alt alta) */
         grid-template-rows: auto !important;
         gap: 10px !important;
     }
 
     .analiz-karti {
-        height: auto !important; /* Sabit yükseklikten kurtardık */
-        min-height: 120px;
+        height: auto !important; /* Sabit yükseklikten kurtarıldı */
+        min-height: 120px !important;
     }
 
-    /* Alternatif kartının grid'deki özel durumunu sıfırladık */
+    /* Alternatif kartının masaüstündeki grid genişlemesini mobilde sıfırladık */
     .alternatif-karti {
         grid-column: 1 !important;
         grid-row: auto !important;
@@ -804,13 +812,13 @@ body {
 
     /* 3. FOOTER VE ŞERİT DÜZENİ */
     .tum-urunler-seridi {
-        height: 100px; /* Mobilde biraz küçülttük */
+        height: 100px !important; /* Mobilde şeridi biraz küçülttük */
     }
 
     .alt-bilgi-bari {
-        flex-direction: column;
-        height: auto;
-        padding: 10px;
-        gap: 5px;
+        flex-direction: column !important;
+        height: auto !important;
+        padding: 10px !important;
+        gap: 5px !important;
     }
 }

@@ -745,42 +745,57 @@ body {
 #analiz-ekran-alani:not(.gizli) .categories-container {
     display: none !important;
 }
-/* --- MOBİL İÇİN ACİL DÜZENLEMELER --- */
-@media (max-width: 600px) {
-    /* 1. Header'ı düzeltiyoruz */
+/* --- MOBİL İÇİN ÖZEL DÜZENLEME (MAX 768PX) --- */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Header'ı istediğin gibi düzenle: Logo ortada, altında arama, altında butonlar */
     .main-header {
-        padding: 10px !important;
-    }
-
-    .brand-logo-img {
-        width: 40px !important; /* Logoyu küçült */
-    }
-
-    /* 2. Kartları tek sütuna indiriyoruz */
-    .sabit-kartlar-izgarasi {
-        grid-template-columns: 1fr !important;
+        flex-direction: column !important;
+        align-items: center !important;
         gap: 15px !important;
-        padding: 10px !important;
     }
 
-    .urun-karti {
+    .logo-container {
+        align-items: center !important;
+        margin-bottom: 10px;
+    }
+
+    .search-and-categories-zone {
+        align-items: center !important;
         width: 100% !important;
     }
 
-    /* 3. Footer'ı düzeltiyoruz (Taşmayı önlemek için) */
-    .alt-bilgi-bari {
+    .categories-container {
+        justify-content: center !important;
         width: 100% !important;
-        margin-left: 0 !important;
-        transform: none !important;
-        padding: 10px !important;
-        flex-direction: column;
-        height: auto !important;
-        gap: 10px;
     }
 
-    /* 4. Analiz ekranı görseli (Eğer taşıyorsa) */
+    /* 2. Ürün kartlarını 2'li yan yana yap */
+    .sabit-kartlar-izgarasi {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+
+    /* 3. Analiz ekranı: Önce görsel/modeller, sonra içerik analizi alt alta */
+    .analiz-ekran-alani {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
     .analiz-sol-blok {
         width: 100% !important;
-        margin: 0 !important;
+        order: 1; /* İlk sırada */
+    }
+
+    .analiz-sag-blok {
+        width: 100% !important;
+        order: 2; /* İkinci sırada */
+        padding: 10px !important;
+    }
+    
+    /* İçerik analizi kutularını mobilde daha iyi sığdır */
+    .analiz-bilgi-kutusu {
+        width: 100% !important;
+        margin-bottom: 10px !important;
     }
 }

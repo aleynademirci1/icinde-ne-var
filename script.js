@@ -434,7 +434,14 @@ window.addEventListener('DOMContentLoaded', () => {
             dosya: "nohut.png", 
             alt: "sag_nohut_kucuk", 
             stil: "position: absolute; z-index: 1; width: 100px; bottom: 6%; right: 30%; transform: rotate(35deg);" 
-        }
+        },
+        { 
+            
+            dosya: "fistik.png", 
+            alt: "sag_fistik_kucuk", 
+            stil: "position: absolute; z-index: 1; width: 210px; bottom: 40%; right: 0%; transform: rotate(35deg);" 
+        },
+        
     ]
 },
    { 
@@ -516,12 +523,6 @@ window.addEventListener('DOMContentLoaded', () => {
             dosya: "fistik.png", 
             alt: "sol_fistik_buyuk", 
             stil: "position: absolute; z-index: 1; width: 190px; top: 5%; left: -5%; transform: rotate(-28deg);" 
-        },
-        { 
-            // 2. SOL ORTA: KÜÇÜK SÜT DAMLASI - Sola yatık duruş (Protein vurgusu)
-            dosya: "sut damlasi.png", 
-            alt: "sol_sut_kucuk", 
-            stil: "position: absolute; z-index: 1; width: 90px; top: 42%; left: -15%; transform: rotate(-20deg);" 
         },
         { 
             // 3. SOL ALT: KÜÇÜK KAKAO - Ters dönmüş açılı (140 derece baş aşağı)

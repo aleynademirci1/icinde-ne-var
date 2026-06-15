@@ -745,3 +745,29 @@ body {
 #analiz-ekran-alani:not(.gizli) .categories-container {
     display: none !important;
 }
+/* --- RESPONSIVE TASARIM BAŞLANGICI --- */
+
+/* Tabletler için (Ekran genişliği 768px'den küçükse) */
+@media (max-width: 768px) {
+    .sabit-kartlar-izgarasi {
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 sütunlu görünüm */
+    }
+}
+
+/* Telefonlar için (Ekran genişliği 480px'den küçükse) */
+@media (max-width: 480px) {
+    .sabit-kartlar-izgarasi {
+        grid-template-columns: 1fr !important; /* Tek sütunlu görünüm */
+    }
+    
+    .brand-name {
+        font-size: 1.2rem; /* Başlık metnini küçültüyoruz */
+    }
+    
+    .search-and-categories-zone {
+        flex-direction: column; /* Arama kutusu ve kategorileri alt alta diziyoruz */
+        gap: 10px;
+    }
+}
+
+/* --- RESPONSIVE TASARIM BİTİŞİ --- */

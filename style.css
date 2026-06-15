@@ -1,0 +1,747 @@
+/* =========================================================================
+   GENEL AYARLAR VE SIFIRLAMA
+   ========================================================================= */
+html {
+    overflow-y: scroll; /* Sayfa zıplamasını önler */
+}
+
+/* Sitedeki her elemana varsayılan olarak Roboto fontunu basıyoruz */
+* {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Form elemanlarının tarayıcı standartlarını Roboto ile eziyoruz */
+input, button, textarea, select {
+    font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    background-color: #F3FBF0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- SPLASH SCREEN --- */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #F3FBF0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.splash-icerik {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.splash-logo {
+    width: 160px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Splash ekranındaki başlığı Fredoka yapıyoruz (Rubik iptal) */
+.splash-baslik {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    color: #8AC440;
+    font-size: 2rem;
+}
+
+/* --- ANA KAPSAYICI (FLEX MOTORU) --- */
+#main-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex: 1 0 auto; /* İçerik az olsa bile footer'ı tabana iter, fazlaysa sıkıştırmaz */
+    position: relative;
+    padding: 20px 20px 0 20px;
+}
+
+.main-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    gap: 50px; 
+    margin-bottom: 10px !important; /* Altındaki boşluğu kibarca 10px'e düşürdük */
+    padding-bottom: 0 !important;   /* Varsa iç boşluğu sıfırladık */
+}
+
+.header-top {
+    display: flex;
+    justify-content: flex-start;
+    width: auto;
+    margin-bottom: 0;
+    margin-top: -5px; /* Logoyu milimetrik olarak biraz daha yukarı çeker */
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.brand-logo-img {
+    width: 70px;
+    height: auto;
+}
+
+/* MARKA ADI */
+.brand-name {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #8AC440;
+    letter-spacing: 0.5px;
+}
+
+/* Arama çubuğu ve kategorileri tutan sağ blok */
+.search-and-categories-zone {
+    width: 100%;
+    max-width: 900px; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Kategorileri arama çubuğunun sol başlangıcına kilitler */
+    gap: 20px;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+}
+
+.search-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.search-input {
+    width: 100%;
+    padding: 14px 20px 14px 50px;
+    font-size: 18px;
+    border: none;
+    border-radius: 16px;
+    background-color: #D6FA9E;
+    color: #3d3d3d;
+    outline: none;
+    font-weight: 600;
+}
+
+/* DROPDOWN KESİN ÖNE ÇEKME ÇÖZÜMÜ */
+.arama-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #D6FA9E;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 9999 !important;
+    margin-top: 2px;
+}
+
+.dropdown-eleman {
+    padding: 12px 20px;
+    color: #3d3d3d;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s;
+}
+
+.dropdown-eleman:hover {
+    background-color: #D6FA9E;
+}
+
+/* Kategorilerin kendi iç dizilimi */
+.categories-container {
+    display: flex;
+    justify-content: flex-start; 
+    gap: 20px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.category-btn {
+    background-color: #D6FA9E;
+    color: #3d3d3d;
+    border: none;
+    padding: 12px 40px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.category-btn:hover {
+    background-color: #8AC440;
+    color: #fff;
+}
+
+.category-btn.aktif-kategori {
+    background-color: #8AC440;
+    color: #ffffff;
+}
+
+/* --- ÜRÜN KARTLARI VE IZGARA (FIGMA ORANLARI) --- */
+.en-cok-bakilanlar-konteyner {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.sabit-kartlar-izgarasi {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    width: 100%;
+    position: relative;
+}
+
+.urun-karti {
+    background-color: #D6FA9E;
+    border-radius: 24px;
+    height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 15px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.urun-karti:hover {
+    transform: scale(1.02);
+}
+
+.urun-resmi {
+    max-width: 85%;
+    max-height: 80%;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.1));
+}
+
+/* GÖZ İKONU HİZALAMASI */
+.ikon-karti-iğne {
+    background-color: #D6FA9E;
+    border-radius: 12px;
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    top: -50px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.goz-svg {
+    width: 24px;
+    height: 24px;
+    fill: #8AC440;
+}
+
+/* =========================================================================
+   KATEGORİ MODUNDA FOOTER'I YUKARI ÇEKEN SİHİRLİ ALAN VE KART EŞİTLEME
+   ========================================================================= */
+.kategori-urunler-konteyner {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    height: auto;
+}
+
+.kategori-kartlar-izgarasi {
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.kategori-kartlar-izgarasi .urun-karti {
+    flex: 0 1 calc(20% - 16px);
+    min-width: 190px;
+    aspect-ratio: 1 / 1;
+    height: auto;
+}
+
+/* =========================================================================
+   💎 FIGMA UYUMLU SABİT ANALİZ EKRANI (TABANLAR EŞİTLENMİŞ YENİ HALİ)
+   ========================================================================= */
+
+/* =========================================================================
+   💎 FIGMA UYUMLU SABİT ANALİZ EKRANI (KESİN ÇÖZÜM - KİLİTLİ GRID SİSTEMİ)
+   ========================================================================= */
+
+/* 🚀 AYRICA ANA EKRAN ALANININ DA DIŞARI TAŞAN MODELLERİ KIRPMASINI ENGELLİYORUZ */
+#analiz-ekran-alani {
+    display: none !important; 
+    display: flex; 
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    gap: 30px !important;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+    /* Modeller sağa sola eksi değerlerle taşarken kenarlardan kesilmesin diye: */
+    overflow: visible !important; 
+}
+/* SOL BLOK: ÜRÜNÜN KENDİ KART ALANI (GENİŞLETİLDİ) */
+.analiz-sol-blok {
+    width: 500px !important; /* Kutuyu genişlettik, modeller rahat nefes alacak */
+    height: 540px !important; 
+    background-color: #D6FA9E;
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 30px;
+    box-sizing: border-box;
+    flex-shrink: 0 !important; 
+    flex-grow: 0 !important;  
+    overflow: visible !important; /* Dışarı taşan dev modellere izin ver */
+}
+
+/* Taşıyıcı Render Sahnesi */
+.render-sahnesi {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible !important;
+}
+
+/* Ana Ürün Resmi (Z-Index en üstte, malzemeler bunun arkasından çıkacak) */
+#analiz-urun-resmi {
+    height: 380px; /* Ürünü bir tık daha heybetli yaptık */
+    z-index: 10;   /* Malzemelerin (z-index: 2) kesinlikle üstünde */
+    position: relative;
+    filter: drop-shadow(0 25px 40px rgba(0,0,0,0.22));
+}
+
+.model-3d-box {
+    position: absolute;
+    width: 200px !important;  
+    height: 200px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2; 
+    overflow: visible;
+    
+    /* 🌟 MAVİLİĞİ YOK EDEN SİHİR: Arka planı tamamen şeffaf yapıyoruz */
+    background: transparent !important; 
+    background-color: transparent !important;
+    border: none !important; /* Eğer border varsa o da gitsin */
+    
+    animation: urunArkasindanEtrafaSacil 1s cubic-bezier(0.175, 0.885, 0.32, 1.15) forwards;
+    transform-origin: center center;
+}
+
+.model-3d-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Görsellerin kırpılmaması ve orijinal oranını koruması için contain yaptık */
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.18));
+}
+
+/* Gecikme motoru */
+.render-sahnesi .model-3d-box:nth-of-type(1) { animation-delay: 0s; }
+.render-sahnesi .model-3d-box:nth-of-type(2) { animation-delay: 0.1s; }
+.render-sahnesi .model-3d-box:nth-of-type(3) { animation-delay: 0.2s; }
+.render-sahnesi .model-3d-box:nth-of-type(4) { animation-delay: 0.3s; }
+
+/* 🚀 ANİMASYON: TAM PAKETİN ORTASINDAN DIŞARIYA SİLKELEYEREK FIRLATMA */
+@keyframes urunArkasindanEtrafaSacil {
+    0% {
+        /* Doğarken render sahnesinin tam ortasındaki paketin arkasından başlar */
+        transform: translate(0, 0) scale(0) rotate(-45deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        /* Bittiğinde JS'den gelen konum stillerini tam olarak uygular */
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* 🌊 Havada Yumuşak Süzülme (Fırlama bittikten sonra devreye girer) */
+@keyframes premiumFloating {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-15px) rotate(5deg); }
+}
+
+/* SAĞ ANA PANEL: İÇERİK ANALİZ ALANI */
+.figma-sag-ana-panel {
+    width: 620px !important;
+    height: 540px !important; /* Sol tarafla yüksekliği eşit */
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+    box-sizing: border-box;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    /* 🚀 SİHİRLİ DOKUNUŞ: Buradaki olası gizli kırpılmaları engelliyoruz */
+    overflow: visible !important; 
+}
+
+/* Başlık Şeridi */
+.analiz-baslik-karti {
+    width: 100% !important;
+    height: 44px !important; 
+    background-color: #D6FA9E;
+    color: #3d3d3d;
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 20px;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+}
+
+/* 🚀 DÜZENLENEN KISIM: Matematiksel Olarak Kilitlenmiş 2 Sütunlu Grid */
+.analiz-kartlar-izgarasi {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    /* 1. Satır (Skor ve İçerik): 140px */
+    /* 2. Satır (Makro): 145px */
+    /* 3. Satır (Zararlı ve Alternatif'in alt kısmı): Kalan tüm boşluk otomatik eşitlenir */
+    grid-template-rows: 140px 145px 1fr !important; 
+    column-gap: 20px !important;
+    row-gap: 15px !important;
+    width: 100% !important;
+    height: 100% !important; /* Panel yüksekliğine tam sığdırır */
+    box-sizing: border-box;
+}
+
+/* ORTAK KART TASARIMI */
+.analiz-karti {
+    background-color: #D6FA9E;
+    border-radius: 20px;
+    padding: 15px 20px !important;
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: 100% !important; /* Grid hücresine tam oturur */
+    margin: 0 !important;
+    overflow: hidden !important; 
+}
+
+/* MİLİMETRİK HÜCRE KOORDİNAT KİLİTLERİ (HTML Yapına Tam Uyumlu) */
+.skor-karti { grid-column: 1 !important; grid-row: 1 !important; }
+.makro-karti { grid-column: 1 !important; grid-row: 2 !important; }
+.zarar-karti { grid-column: 1 !important; grid-row: 3 !important; background-color: #FFE3E3 !important; }
+.icerik-karti { grid-column: 2 !important; grid-row: 1 !important; }
+/* Alternatif kartı 2. satırdan başlayıp 3. satırın sonuna kadar uzayarak tabanı eşitler */
+.alternatif-karti { grid-column: 2 !important; grid-row: 2 / span 2 !important; background-color: #D6FA9E !important; }
+
+/* Kart İçi Başlık Standartları */
+.analiz-karti h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: #3d3d3d;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(46, 74, 16, 0.1);
+    padding-bottom: 4px;
+    flex-shrink: 0;
+}
+
+.zarar-karti h3 {
+    color: #B52A2A !important;
+    border-bottom: 1px solid rgba(181, 42, 42, 0.1) !important;
+}
+
+/* Listelerin Taşmasını Önleyen İç Kaydırma ve Gizli Scrollbar */
+#analiz-temel-icerikler-listesi, .zarar-karti ul {
+    margin: 0;
+    padding: 0 0 0 15px !important;
+    list-style-type: disc !important;
+    overflow-y: auto !important; 
+    flex-grow: 1;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+
+#analiz-temel-icerikler-listesi::-webkit-scrollbar,
+.zarar-karti ul::-webkit-scrollbar {
+    display: none;
+}
+
+#analiz-temel-icerikler-listesi li, .zarar-karti ul li {
+    font-size: 0.85rem;
+    color: #3d3d3d;
+    margin-bottom: 4px;
+    display: list-item !important;
+}
+
+.zarar-karti ul li {
+    color: #8A1F1F !important;
+}
+
+/* GRAFİKLERİN KARTA SIĞMA AYARLARI */
+.skor-karti .grafik-puan-kapsayici {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.canvas-kapsayici-yarim {
+    position: relative;
+    width: 110px !important;
+    height: 55px !important;
+    flex-shrink: 0;
+}
+
+.canvas-kapsayici-yarim canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#analiz-skor-rakam {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #3d3d3d;
+    line-height: 1;
+}
+
+.makro-icerik-kapsayici {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.canvas-kapsayici-halka {
+    position: relative;
+    width: 60px !important;
+    height: 60px !important;
+    flex-shrink: 0;
+}
+
+.canvas-kapsayici-halka canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#makro-metin-efsanesi {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0;
+    font-size: 0.8rem;
+    color: #3d3d3d;
+    line-height: 1.3;
+    flex-grow: 1;
+}
+
+/* ALTERNATİF KARTI İÇERİĞİ */
+.alternatif-kontrol-alani {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    flex-grow: 1;
+    text-align: center;
+}
+
+#analiz-alternatif-resim {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    background: transparent;
+    border-radius: 12px;
+    padding: 6px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+#analiz-alternatif-metin {
+    font-size: 0.85rem;
+    color: #3d3d3d;
+    margin: 0;
+    line-height: 1.3;
+    font-weight: 600;
+    max-width: 95%;
+}
+
+/* --- YEŞİL ŞERİT TAM GENİŞLİK AYARI --- */
+.tum-urunler-seridi {
+    /* Eski absolute/relative çakışmalarını temizleyip yerini garantiye alıyoruz */
+    position: relative !important;
+    top: auto !important;
+    
+    display: flex;
+    align-items: center;
+    width: 100vw; 
+    margin-left: 50%;
+    /* Orijinal kaydırma efektini bozmamak için transform yapısını aynen koruyoruz */
+    transform: translateX(-50%) !important; 
+    height: 140px;
+    background-color: #D6FA9E;
+    
+    /* 🚀 SİHİRLİ DOKUNUŞ: Üstünde hangi sayfa açılırsa açılsın şeridi hep en alta çiviler */
+    margin-top: auto !important; 
+    margin-bottom: 30px;
+    overflow: hidden;
+    border-radius: 0;
+    flex-shrink: 0 !important; /* Diğer içerikler büyüdüğünde şeridin dikeyde ezilmesini önler */
+}
+
+/* Şeridin akıcı motoru */
+.serit-rayi {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    height: 100%;
+    width: max-content;
+    animation: kaydir 25s linear infinite;
+}
+
+.tum-urunler-seridi:hover .serit-rayi {
+    animation-play-state: paused;
+}
+
+.serit-eleman {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.serit-eleman img {
+    max-height: 90px;
+    width: auto;
+    object-fit: contain;
+}
+
+@keyframes kaydir {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- PANELLER --- */
+.sayfa-paneli {
+    width: 100%;
+    max-width: 750px;
+    margin: 20px auto;
+}
+
+.panel-icerik {
+    background-color: #D6FA9E;
+    padding: 40px;
+    border-radius: 24px;
+    color: #3d3d3d;
+    text-align: center;
+}
+
+/* --- FOOTER TAM GENİŞLİK AYARI --- */
+.alt-bilgi-bari {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    height: 60px;
+    background-color: #F3FBF0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    margin-top: auto;
+    flex-shrink: 0;
+    border-top: 1px solid rgba(0,0,0,0.10);
+}
+
+.telif-yazisi {
+    color: #3d3d3d;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.footer-linkleri {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-linkleri a {
+    color: #3d3d3d;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background-color: #D6FA9E;
+    padding: 6px 16px;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+.footer-linkleri a:hover {
+    background-color: #8AC440;
+    color: #fff;
+}
+
+.gizli {
+    display: none !important;
+}
+
+/* =========================================================================
+   ANALİZ SAYFASINDA KATEGORİLERİ GİZLEYEN KURAL
+   ========================================================================= */
+#analiz-ekran-alani:not(.gizli) ~ #kategoriler-alani .kategori-butonlari,
+#analiz-ekran-alani:not(.gizli) .kategori-butonlari,
+#analiz-ekran-alani:not(.gizli) ~ .categories-container,
+#analiz-ekran-alani:not(.gizli) .categories-container {
+    display: none !important;
+}

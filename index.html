@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İçinde Ne Var?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+    <div id="splash-screen">
+        <div class="splash-icerik">
+            <img src="logo.png" alt="Logo" class="splash-logo">
+            <h1 class="splash-baslik">İÇİNDE NE VAR?</h1>
+        </div>
+    </div>
+
+    <div id="main-content" class="gizli">
+        
+        <header class="main-header">
+            <div class="header-top">
+                <div class="logo-container" id="btn-anasayfa">
+                    <img src="logo.png" alt="İçinde Ne Var Logo" class="brand-logo-img">
+                    <h1 class="brand-name">İÇİNDE NE VAR?</h1>
+                </div>
+            </div>
+
+            <div id="ust-arama-kategori-alani" class="search-and-categories-zone">
+                <div class="search-container">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="11" cy="11" r="7" stroke="#4b8a10" stroke-width="2.5"/>
+                        <path d="M20 20L16 16" stroke="#4b8a10" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                    <input type="text" id="urunAraInput" placeholder="Ürün ara" class="search-input" autocomplete="off">
+                    <div id="aramaDropdown" class="arama-dropdown gizli"></div>
+                </div>
+                <div class="categories-container">
+                    
+                    <button id="btnAtistirmalik" class="category-btn">Atıştırmalıklar</button>
+                    <button id="btnIcecek" class="category-btn">İçecekler</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="en-cok-bakilanlar-konteyner">
+            <div class="sabit-kartlar-izgarasi">        
+                <div class="ikon-karti-iğne">
+                    <svg viewBox="0 0 24 24" class="goz-svg">
+                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/>
+                    </svg>
+                </div>
+                <div class="urun-karti" data-urun="Lipton Ice Tea"><img src="Lipton Ice Tea.png" class="urun-resmi" alt="Lipton"></div>
+                <div class="urun-karti" data-urun="Zuber Protein Bar"><img src="Zuber Protein Bar.png" class="urun-resmi" alt="Züber"></div>
+                <div class="urun-karti" data-urun="Zuber Nohut Cips"><img src="Zuber Nohut Cips.png" class="urun-resmi" alt="Züber"></div>
+                <div class="urun-karti" data-urun="Eti Pop Kek"><img src="Eti Pop Kek.png" class="urun-resmi" alt="Popkek"></div>
+                <div class="urun-karti" data-urun="Eti Crax"><img src="Eti Crax.png" class="urun-resmi" alt="Crax"></div>
+            </div>
+        </main>
+
+        <div id="kategoriIzgaraAlani" class="kategori-urunler-konteyner gizli">
+            <div id="kategoriGrid" class="kategori-kartlar-izgarasi"></div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <div id="analiz-ekran-alani" class="gizli">
+          
+          <div class="analiz-sol-blok">
+            <div class="render-sahnesi">
+              <img id="analiz-urun-resmi" src="" alt="Ürün Resmi">
+            </div>
+          </div>
+
+          <div class="figma-sag-ana-panel">
+            <div class="analiz-baslik-karti">
+                İçerik Analizi
+            </div>
+            
+            <div class="analiz-kartlar-izgarasi">
+              
+                <div class="analiz-karti skor-karti">
+                  <h3>Sağlık Puanı</h3>
+                  <div class="grafik-puan-kapsayici">
+                    <div class="canvas-kapsayici-yarim">
+                      <canvas id="chartSaglikPuani"></canvas>
+                    </div>
+                    <span id="analiz-skor-rakam">0.0</span>
+                  </div>
+                </div>
+
+                <div class="analiz-karti icerik-karti">
+                  <h3>Temel İçerikler</h3>
+                  <ul id="analiz-temel-icerikler-listesi"></ul>
+                </div>
+
+                <div class="analiz-karti makro-karti">
+                  <h3>Makro Besinler</h3>
+                  <div class="makro-icerik-kapsayici">
+                    <div class="canvas-kapsayici-halka">
+                      <canvas id="chartMakroBesinler"></canvas>
+                    </div>
+                    <ul id="makro-metin-efsanesi"></ul>
+                  </div>
+                </div>
+
+                <div class="analiz-karti zarar-karti">
+                  <h3>Zararlı Maddeler</h3>
+                  <ul id="analiz-zararli-maddeler-listesi"></ul>
+                </div>
+
+                <div class="analiz-karti alternatif-karti">
+                  <h3>Daha Sağlıklı Alternatif</h3>
+                  <div class="alternatif-kontrol-alani">
+                    <img id="analiz-alternatif-resim" src="" alt="Alternatif">
+                    <p id="analiz-alternatif-metin"></p>
+                  </div>
+                </div>
+
+            </div> </div> </div>
+
+        <section class="tum-urunler-seridi">
+            <div class="serit-rayi">
+                <div class="serit-eleman" data-urun="Zuber Lokma"><img src="Zuber Lokma.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Pepsi"><img src="Pepsi.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Eti Canga"><img src="Eti Canga.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Zuber Ice Tea"><img src="Zuber Ice Tea.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Eti Cikolatali Gofret"><img src="Eti Cikolatali Gofret.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Saklikoy"><img src="Saklikoy.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Uludag Maden Suyu"><img src="Uludag Maden Suyu.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Wefood Glutensiz Kraker"><img src="Wefood Glutensiz Kraker.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Zuber Nohut Cips"><img src="Zuber Nohut Cips.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Eti Pop Kek"><img src="Eti Pop Kek.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Lipton Ice Tea"><img src="Lipton Ice Tea.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Zuber Protein Bar"><img src="Zuber Protein Bar.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Zuber Kurabiye"><img src="Zuber Kurabiye.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Zuber Lokma"><img src="Zuber Lokma.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Pepsi"><img src="Pepsi.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Eti Canga"><img src="Eti Canga.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Zuber Ice Tea"><img src="Zuber Ice Tea.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Eti Cikolatali Gofret"><img src="Eti Cikolatali Gofret.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Saklikoy"><img src="Saklikoy.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Uludag Maden Suyu"><img src="Uludag Maden Suyu.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Wefood Glutensiz Kraker"><img src="Wefood Glutensiz Kraker.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Zuber Nohut Cips"><img src="Zuber Nohut Cips.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Eti Pop Kek"><img src="Eti Pop Kek.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Lipton Ice Tea"><img src="Lipton Ice Tea.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Zuber Protein Bar"><img src="Zuber Protein Bar.png" alt=""></div>
+                <div class="serit-eleman" data-urun="Zuber Kurabiye"><img src="Zuber Kurabiye.png" alt=""></div>
+            </div>
+        </section>
+
+     <div id="hakkimizda-alani" class="gizli sayfa-paneli">
+        
+        <div class="panel-icerik">
+            <h2>Hakkımızda</h2>
+            <p>Biz, tükettiğiniz ürünlerin içinde tam olarak ne olduğunu şeffaf, hızlı ve en doğru şekilde görmeniz için buradayız.</p>
+            <p>Ne yediğinizi bilmek en doğal hakkınız!</p>
+        </div>
+    </div>
+
+    <div id="iletisim-alani" class="gizli sayfa-paneli">
+        
+        <div class="panel-icerik">
+            <h2>İletişim</h2>
+            <p>Bizimle her türlü soru, görüş, öneri veya iş birliği için iletişime geçebilirsiniz.</p>
+            <div class="iletisim-bilgileri">
+                <p><strong>📧 E-posta:</strong> info@icindenevar.com</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="alt-bilgi-bari">
+        <span class="telif-yazisi">Tüm Hakları Saklıdır © 2026</span>
+        <div class="footer-linkleri">
+            <a href="#" id="btn-hakkimizda" onclick="event.preventDefault(); hakkimizdaSayfasiAc();">Hakkımızda</a>
+            <a href="#" id="btn-iletisim" onclick="event.preventDefault(); iletisimSayfasiAc();">İletişim</a>
+        </div>
+    </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

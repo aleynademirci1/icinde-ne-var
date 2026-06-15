@@ -745,29 +745,42 @@ body {
 #analiz-ekran-alani:not(.gizli) .categories-container {
     display: none !important;
 }
-/* --- RESPONSIVE TASARIM BAŞLANGICI --- */
+/* --- MOBİL İÇİN ACİL DÜZENLEMELER --- */
+@media (max-width: 600px) {
+    /* 1. Header'ı düzeltiyoruz */
+    .main-header {
+        padding: 10px !important;
+    }
 
-/* Tabletler için (Ekran genişliği 768px'den küçükse) */
-@media (max-width: 768px) {
-    .sabit-kartlar-izgarasi {
-        grid-template-columns: repeat(2, 1fr) !important; /* 2 sütunlu görünüm */
+    .brand-logo-img {
+        width: 40px !important; /* Logoyu küçült */
     }
-}
 
-/* Telefonlar için (Ekran genişliği 480px'den küçükse) */
-@media (max-width: 480px) {
+    /* 2. Kartları tek sütuna indiriyoruz */
     .sabit-kartlar-izgarasi {
-        grid-template-columns: 1fr !important; /* Tek sütunlu görünüm */
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+        padding: 10px !important;
     }
-    
-    .brand-name {
-        font-size: 1.2rem; /* Başlık metnini küçültüyoruz */
+
+    .urun-karti {
+        width: 100% !important;
     }
-    
-    .search-and-categories-zone {
-        flex-direction: column; /* Arama kutusu ve kategorileri alt alta diziyoruz */
+
+    /* 3. Footer'ı düzeltiyoruz (Taşmayı önlemek için) */
+    .alt-bilgi-bari {
+        width: 100% !important;
+        margin-left: 0 !important;
+        transform: none !important;
+        padding: 10px !important;
+        flex-direction: column;
+        height: auto !important;
         gap: 10px;
     }
-}
 
-/* --- RESPONSIVE TASARIM BİTİŞİ --- */
+    /* 4. Analiz ekranı görseli (Eğer taşıyorsa) */
+    .analiz-sol-blok {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+}

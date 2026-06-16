@@ -128,6 +128,7 @@ body {
 .search-container {
     position: relative;
     width: 100%;
+    z-index: 10000 !important; /* Arama çubuğunu en üst katmana kilitler */
 }
 
 .search-icon {
@@ -323,6 +324,7 @@ body {
     box-sizing: border-box;
     /* Modeller sağa sola eksi değerlerle taşarken kenarlardan kesilmesin diye: */
     overflow: visible !important; 
+    z-index: 1 !important;
 }
 /* SOL BLOK: ÜRÜNÜN KENDİ KART ALANI (GENİŞLETİLDİ) */
 .analiz-sol-blok {
@@ -745,80 +747,84 @@ body {
 #analiz-ekran-alani:not(.gizli) .categories-container {
     display: none !important;
 }
-/* --- MOBİL UYUMLULUK (768px ve altı) --- */
-/* =========================================================================
-   MOBİL UYUMLULUK (768px ve altı - Telefonlar ve Tabletler)
-   ========================================================================= */
+/* --- MOBİL UYUMLULUK (Tüm Taslak ve 3D Sığdırma Ayarlı) --- */
 @media (max-width: 768px) {
     
-    /* 1. ANA SAYFA DÜZENİ */
+    /* 1. ANA SAYFA DİKEY TASARIM (Önceki Ayarlar) */
     .main-header {
         flex-direction: column !important;
         align-items: center !important;
-        gap: 15px !important;
+        gap: 10px !important;
         padding: 10px !important;
     }
 
-    .search-and-categories-zone {
-        align-items: center !important;
-        width: 100% !important;
+    .header-top { margin-top: 0 !important; margin-bottom: 5px !important; }
+    .search-and-categories-zone { flex-direction: column !important; align-items: center !important; width: 100% !important; gap: 10px !important; }
+    .categories-container { justify-content: center !important; width: 100% !important; margin-bottom: 10px !important; }
+    .sabit-kartlar-izgarasi { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; padding: 0 10px !important; }
+    .ikon-karti-iğne { top: -45px !important; }
+
+    /* 2. ANALİZ EKRANI (Üst Kısım 3D Modelleri Sığdırma) */
+    #analiz-ekran-alani {
         display: flex !important;
         flex-direction: column !important;
-    }
-
-    /* Ürün ızgarası: İkili sistem (Figma tasarımından mobilde 2'li yapıya geçiş) */
-    .sabit-kartlar-izgarasi {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 10px !important;
-        padding: 5px !important;
-    }
-
-    /* 2. ANALİZ EKRANI (İçeriklerin alt alta dizilmesi) */
-    #analiz-ekran-alani {
-        flex-direction: column !important; /* Sol panel üst, sağ panel alt */
-        padding: 10px !important;
-        gap: 20px !important;
-        display: flex !important;
+        width: 100% !important;
+        padding: 0 !important;
+        gap: 15px !important;
     }
 
     .analiz-sol-blok {
         width: 100% !important;
-        height: 350px !important; /* Telefonda görsel alanı biraz kıstık */
-        margin-bottom: 0 !important;
+        height: 250px !important; /* Dikey alanı daha da kıstık */
+        order: 1 !important;
+    }
+.model-3d-box {
+        width: 50px !important;
+        height: 50px !important;
+        min-width: 50px !important;
+        min-height: 50px !important;
+        max-width: 50px !important;
+        max-height: 50px !important;
+        transform: scale(0.5) !important; /* Görseli yarı yarıya küçültür */
+        margin: -20px !important; /* Paketin etrafına yaklaşması için */
+    }
+
+    .model-3d-box img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+    }
+
+    #analiz-urun-resmi {
+        height: 140px !important; /* Ana paketi de biraz daha küçülttük ki modeller etrafında yer bulsun */
+        filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15));
     }
 
     .figma-sag-ana-panel {
         width: 100% !important;
-        height: auto !important; /* İçeriğe göre dinamik uzar */
+        order: 2 !important;
+        height: auto !important;
     }
 
+    /* Analiz Bölümleri: Hepsi tek sütun alt alta (Taslak Uyumlu) */
     .analiz-kartlar-izgarasi {
-        display: grid !important;
-        grid-template-columns: 1fr !important; /* Mobilde her şey tek sütun (alt alta) */
-        grid-template-rows: auto !important;
-        gap: 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: none !important;
+        gap: 12px !important;
     }
 
     .analiz-karti {
-        height: auto !important; /* Sabit yükseklikten kurtarıldı */
-        min-height: 120px !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 100px !important;
     }
 
-    /* Alternatif kartının masaüstündeki grid genişlemesini mobilde sıfırladık */
-    .alternatif-karti {
-        grid-column: 1 !important;
-        grid-row: auto !important;
-    }
-
-    /* 3. FOOTER VE ŞERİT DÜZENİ */
-    .tum-urunler-seridi {
-        height: 100px !important; /* Mobilde şeridi biraz küçülttük */
-    }
-
+    /* 3. FOOTER DÜZENİ */
     .alt-bilgi-bari {
         flex-direction: column !important;
         height: auto !important;
-        padding: 10px !important;
-        gap: 5px !important;
+        padding: 15px !important;
+        text-align: center !important;
     }
 }

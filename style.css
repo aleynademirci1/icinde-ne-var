@@ -751,87 +751,53 @@ body {
    MOBİL UYUMLU RESPONSIVE (768px ve altı)
    ========================================================================= */
 @media (max-width: 768px) {
-
-    /* 1. ANA SAYFA DİKEY TASARIM */
-    .main-header {
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 15px !important;
-        padding: 10px !important;
-    }
-
-    .search-and-categories-zone {
-        align-items: center !important;
+    body, html {
+        overflow-x: hidden !important;
         width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 15px !important;
     }
 
-    .categories-container {
-        justify-content: center !important;
-        flex-wrap: wrap !important;
-        gap: 10px !important;
+    .logo-container {
+        position: relative !important;
+        z-index: 99999 !important;
     }
 
-    /* Ürün Izgarası: İkili sistem */
-    .sabit-kartlar-izgarasi {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 10px !important;
-        padding: 5px !important;
-    }
-
-    .kategori-kartlar-izgarasi .urun-karti {
-        flex: 0 1 calc(50% - 10px) !important;
-        min-width: auto !important;
-    }
-
-    /* 2. ANALİZ EKRANI (Dikey Alt Alta Akış) */
     #analiz-ekran-alani {
         display: flex !important;
         flex-direction: column !important;
         width: 100% !important;
+        height: auto !important;
         padding: 10px !important;
         gap: 15px !important;
     }
 
     .analiz-sol-blok {
         width: 100% !important;
-        height: 250px !important; /* Dikey sığdırma */
-        order: 1 !important;
+        height: auto !important; 
+        padding: 15px !important;
     }
 
     .figma-sag-ana-panel {
         width: 100% !important;
-        order: 2 !important;
-        height: auto !important;
+        height: auto !important; 
     }
 
-    /* Analiz kartları tek sütun */
     .analiz-kartlar-izgarasi {
         display: flex !important;
         flex-direction: column !important;
-        gap: 10px !important;
+        width: 100% !important;
+        height: auto !important;
+        gap: 15px !important;
     }
 
     .analiz-karti {
         width: 100% !important;
-        height: auto !important;
-        min-height: 100px !important;
+        height: auto !important; 
+        min-height: 120px !important;
+        padding: 15px !important;
     }
 
-    /* 3D Modelleri zorla küçültme (JS inline stillerini ezmek için) */
     .model-3d-box {
-        width: 50px !important;
-        height: 50px !important;
-        transform: scale(0.6) !important;
-        margin: -10px !important;
-    }
-
-    /* 3. FOOTER */
-    .alt-bilgi-bari {
-        flex-direction: column !important;
-        height: auto !important;
-        padding: 10px !important;
+        max-width: 80px !important; 
+        max-height: 80px !important;
     }
 }

@@ -747,57 +747,58 @@ body {
 #analiz-ekran-alani:not(.gizli) .categories-container {
     display: none !important;
 }
-/* --- MOBİL UYUMLULUK (Tüm Taslak ve 3D Sığdırma Ayarlı) --- */
+/* =========================================================================
+   MOBİL UYUMLU RESPONSIVE (768px ve altı)
+   ========================================================================= */
 @media (max-width: 768px) {
-    
-    /* 1. ANA SAYFA DİKEY TASARIM (Önceki Ayarlar) */
+
+    /* 1. ANA SAYFA DİKEY TASARIM */
     .main-header {
         flex-direction: column !important;
         align-items: center !important;
-        gap: 10px !important;
+        gap: 15px !important;
         padding: 10px !important;
     }
 
-    .header-top { margin-top: 0 !important; margin-bottom: 5px !important; }
-    .search-and-categories-zone { flex-direction: column !important; align-items: center !important; width: 100% !important; gap: 10px !important; }
-    .categories-container { justify-content: center !important; width: 100% !important; margin-bottom: 10px !important; }
-    .sabit-kartlar-izgarasi { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; padding: 0 10px !important; }
-    .ikon-karti-iğne { top: -45px !important; }
+    .search-and-categories-zone {
+        align-items: center !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
 
-    /* 2. ANALİZ EKRANI (Üst Kısım 3D Modelleri Sığdırma) */
+    .categories-container {
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+    }
+
+    /* Ürün Izgarası: İkili sistem */
+    .sabit-kartlar-izgarasi {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        padding: 5px !important;
+    }
+
+    .kategori-kartlar-izgarasi .urun-karti {
+        flex: 0 1 calc(50% - 10px) !important;
+        min-width: auto !important;
+    }
+
+    /* 2. ANALİZ EKRANI (Dikey Alt Alta Akış) */
     #analiz-ekran-alani {
         display: flex !important;
         flex-direction: column !important;
         width: 100% !important;
-        padding: 0 !important;
+        padding: 10px !important;
         gap: 15px !important;
     }
 
     .analiz-sol-blok {
         width: 100% !important;
-        height: 250px !important; /* Dikey alanı daha da kıstık */
+        height: 250px !important; /* Dikey sığdırma */
         order: 1 !important;
-    }
-.model-3d-box {
-        width: 50px !important;
-        height: 50px !important;
-        min-width: 50px !important;
-        min-height: 50px !important;
-        max-width: 50px !important;
-        max-height: 50px !important;
-        transform: scale(0.5) !important; /* Görseli yarı yarıya küçültür */
-        margin: -20px !important; /* Paketin etrafına yaklaşması için */
-    }
-
-    .model-3d-box img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: contain !important;
-    }
-
-    #analiz-urun-resmi {
-        height: 140px !important; /* Ana paketi de biraz daha küçülttük ki modeller etrafında yer bulsun */
-        filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15));
     }
 
     .figma-sag-ana-panel {
@@ -806,12 +807,11 @@ body {
         height: auto !important;
     }
 
-    /* Analiz Bölümleri: Hepsi tek sütun alt alta (Taslak Uyumlu) */
+    /* Analiz kartları tek sütun */
     .analiz-kartlar-izgarasi {
         display: flex !important;
         flex-direction: column !important;
-        grid-template-columns: none !important;
-        gap: 12px !important;
+        gap: 10px !important;
     }
 
     .analiz-karti {
@@ -820,11 +820,18 @@ body {
         min-height: 100px !important;
     }
 
-    /* 3. FOOTER DÜZENİ */
+    /* 3D Modelleri zorla küçültme (JS inline stillerini ezmek için) */
+    .model-3d-box {
+        width: 50px !important;
+        height: 50px !important;
+        transform: scale(0.6) !important;
+        margin: -10px !important;
+    }
+
+    /* 3. FOOTER */
     .alt-bilgi-bari {
         flex-direction: column !important;
         height: auto !important;
-        padding: 15px !important;
-        text-align: center !important;
+        padding: 10px !important;
     }
 }
